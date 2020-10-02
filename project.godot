@@ -27,6 +27,10 @@ Globals="*res://Globals.gd"
 
 gdscript/warnings/return_value_discarded=false
 
+[editor_plugins]
+
+enabled=PoolStringArray( "aseprite_importer" )
+
 [input]
 
 menu={
