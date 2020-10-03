@@ -4,7 +4,10 @@
 [ext_resource path="res://Entities/Bats/bat.aseprite" type="SpriteFrames" id=2]
 [ext_resource path="res://Entities/Bats/Bat.gd" type="Script" id=3]
 
-[node name="Bat" type="Node2D"]
+[node name="Bat" type="Node2D" groups=[
+"enemies",
+"mooks",
+]]
 script = ExtResource( 3 )
 
 [node name="HPBar" parent="." instance=ExtResource( 1 )]
