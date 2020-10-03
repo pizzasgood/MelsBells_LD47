@@ -1,31 +1,31 @@
-extends Node
+extends TextureButton
 
-onready var player : AudioStreamPlayer = get_parent().find_node("TonePlayer")
-var tones = []
+onready var player : AudioStreamPlayer = get_node("AudioStreamPlayer")
+onready var seq_recorder = get_node("/root/Main/SeqRecorder")
 var rate : int
-
-func _process(_delta):
-	pass
-
-func _ready():
-	generate_tones()
-	#print_csv()
-	player.stream = tones[0]
-	player.play()
+var duration = 0.5 #seconds
+var amplitude = 0.5
+var action = "unbound"
+var note
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_select"):
-		player.play()
+	if event.is_action_pressed(action):
+		_on_BellButton_pressed()
 		get_tree().set_input_as_handled()
 
-func generate_tones():
-	var freqs = [ 440.0 ]
-	var duration = 0.5 #seconds
-	var amplitude = 0.5
-	for f in freqs:
-		tones.append(generate_tone(f, duration, amplitude))
+func _on_BellButton_pressed():
+	play()
+	seq_recorder.record_note(note)
 
-func generate_tone(freq, duration, amplitude):
+func play():
+	player.play()
+
+func setup(index, action_name):
+	note = index
+	action = action_name
+	_set_freq(Sequence.FREQS[note])
+
+func _set_freq(freq):
 	var tone = AudioStreamSample.new()
 	tone.format = AudioStreamSample.FORMAT_16_BITS
 	rate = tone.mix_rate
@@ -56,7 +56,7 @@ func generate_tone(freq, duration, amplitude):
 				data.append(int(val) % 256)
 				data.append(int(val / 256))
 	tone.data = PoolByteArray(data)
-	return tone
+	player.stream = tone
 
 func sin_gen(n, freq, phase=0):
 	return sin(n * freq * TAU / rate + phase)
@@ -74,22 +74,22 @@ func print_csv():
 	var file = File.new()
 	file.open("user://graphs/graph.csv", File.WRITE)
 	var line = ""
-	var data = Array(tones[0].data)
+	var data = Array(player.stream.data)
 	#convert from unsigned to signed
-	for n in range(0, data.size()):
+	for n in range(0, len(data)):
 		if data[n] > 127: #TODO: not sure if 127 or 128
 			data[n] -= 256 #TODO: not sure if 255 or 256
-	match(tones[0].format):
+	match(player.stream.format):
 		AudioStreamSample.FORMAT_8_BITS:
-			for n in range(0, data.size()):
+			for n in range(0, len(data)):
 				var d = data[n]
 				line += "%s,%s\n" % [ (1.0*n)/rate, d ]
 		AudioStreamSample.FORMAT_16_BITS:
-			for n in range(0, data.size(), 2):
+			for n in range(0, len(data), 2):
 				var d = data[n+1] * 256 + data[n]
 				line += "%s,%s\n" % [ (n/2.0)/rate, d ]
 		_:
-			push_error("ToneGen does not support AudioStreamSample format %s" % tones[0].format)
+			push_error("ToneGen does not support AudioStreamSample format %s" % player.stream.format)
 			get_tree().quit()
 	file.store_string(line)
 	file.close()

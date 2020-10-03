@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BellButtons/red.png" type="Texture" id=1]
+[ext_resource path="res://BellButton.gd" type="Script" id=2]
+
+[node name="BellButton" type="TextureButton"]
+margin_right = 128.0
+margin_bottom = 256.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[connection signal="pressed" from="." to="." method="_on_BellButton_pressed"]

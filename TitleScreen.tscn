@@ -27,7 +27,7 @@ margin_bottom = 77.0
 [node name="Title" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 margin_right = 345.0
 margin_bottom = 14.0
-text = "Template Game"
+text = "Mel's Bells"
 align = 1
 
 [node name="Image" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer"]
