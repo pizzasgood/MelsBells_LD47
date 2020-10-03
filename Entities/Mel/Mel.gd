@@ -64,3 +64,11 @@ func knockout():
 	print("Ouch!  You'll have to power back up to continue.")
 	bossfight = false
 	falling = true
+
+func _unhandled_input(event):
+	if event.is_action("ui_up"):
+		self.hp = max_hp - 10
+	if event.is_action("ui_down"):
+		self.hp = 0
+	if event.is_action("ui_right"):
+		loop.victory()
