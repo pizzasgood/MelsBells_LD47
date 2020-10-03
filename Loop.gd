@@ -10,7 +10,7 @@ var mooks = [
 	load("res://Entities/Bats/Bat.tscn"),
 	load("res://Entities/Ghosts/Ghost.tscn"),
 ]
-var target_population = 5
+var target_population = 20
 
 func _ready():
 	mel.loop_pos = TAU / 4
