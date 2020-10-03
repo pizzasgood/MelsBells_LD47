@@ -10,7 +10,6 @@ var mooks = [
 	load("res://Entities/Bats/Bat.tscn"),
 	load("res://Entities/Ghosts/Ghost.tscn"),
 ]
-var horde = []
 var target_population = 5
 
 func _ready():
@@ -21,19 +20,24 @@ func _ready():
 func _process(_delta):
 	repopulate()
 
+func get_horde():
+	return get_tree().get_nodes_in_group("mooks")
+
+func count_horde():
+	return len(get_horde())
+
 func repopulate():
-	while len(horde) < target_population:
+	while count_horde() < target_population:
 		spawn_mook()
 
 func spawn_mook(angle=null):
-	var id = randf() * len(mooks) * len(horde) / target_population
+	var id = randf() * len(mooks) * count_horde() / target_population
 	spawn_entity(mooks[id], angle)
 
 func spawn_entity(res, angle=null):
 	var entity = res.instance()
 	add_child(entity)
 	entity.loop_pos = angle if angle != null else get_next_gap()
-	horde.append(entity)
 func spawn_zombie(angle=null):
 	spawn_entity(mooks[0], angle)
 func spawn_bat(angle=null):
@@ -45,9 +49,9 @@ func spawn_ghost(angle=null):
 func get_next_gap():
 	var minimum_gap = 300.0
 	var a = mel.loop_pos
-	var b = get_next_monster().loop_pos if len(horde) > 0 else mel.loop_pos
+	var b = get_next_monster().loop_pos if count_horde() > 0 else mel.loop_pos
 	var tries = 0
-	while get_ccw_distance_in_pixels(a, b) < minimum_gap and tries <= len(horde):
+	while get_ccw_distance_in_pixels(a, b) < minimum_gap and tries <= count_horde():
 		a = b
 		b = get_next_monster(a).loop_pos
 		tries += 1
@@ -58,7 +62,7 @@ func get_next_monster(angle=null):
 	if angle == null:
 		angle = mel.loop_pos
 	var ret = null
-	for e in horde:
+	for e in get_horde():
 		if ret == null:
 			ret = e
 		else:
@@ -82,7 +86,7 @@ func get_ccw_distance_in_pixels(a, b):
 
 func victory():
 	print("You've defeated Loupe and saved your town!  Congratulations!")
-	for e in horde:
+	for e in get_horde():
 		e.explode()
 		victory_timer.start()
 

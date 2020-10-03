@@ -70,6 +70,3 @@ func _on_death():
 		mel.moving = true
 		visible = false
 		queue_free()
-		var index = loop.horde.find(self)
-		if index > 0:
-			loop.horde.remove(index)
