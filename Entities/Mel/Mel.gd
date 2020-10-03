@@ -65,10 +65,12 @@ func knockout():
 	bossfight = false
 	falling = true
 
+# these are some cheat codes for debugging
 func _unhandled_input(event):
-	if event.is_action("ui_up"):
-		self.hp = max_hp - 10
-	if event.is_action("ui_down"):
-		self.hp = 0
-	if event.is_action("ui_right"):
-		loop.victory()
+	if OS.is_debug_build():
+		if event.is_action("ui_up"):
+			self.hp = max_hp - 10
+		if event.is_action("ui_down"):
+			self.hp = 0
+		if event.is_action("ui_right"):
+			loop.victory()
