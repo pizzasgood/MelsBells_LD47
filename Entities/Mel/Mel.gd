@@ -3,22 +3,35 @@ extends Entity
 var strength setget , get_strength
 
 var moving = false
+var falling = false
 var target : Enemy
-var speed : float = 200
+var walk_speed : float = 150
+var fly_speed : float = 300
+var fall_speed : float = 500
 var angular_speed : float
 var fighting_distance : float = 100
 var fighting_angle : float
+var bossfight = false
 
 func _init():
 	max_hp = 100
 
 func _ready():
 	set_hp(0)
-	angular_speed = speed / loop.radius
+	angular_speed = walk_speed / loop.radius
 	fighting_angle = fighting_distance / loop.radius
 
 func _process(delta):
-	if moving:
+	if falling:
+		var target_pos = Vector2(-loop.radius, 0)
+		var amount = fall_speed * delta
+		if position != target_pos:
+			position = position.move_toward(target_pos, amount)
+		else:
+			falling = false
+			moving = true
+			self.loop_pos = TAU / 2
+	elif moving:
 		if hp < max_hp:
 			# move to the next mook
 			target = loop.get_next_monster()
@@ -32,10 +45,11 @@ func _process(delta):
 				target.engage()
 		else:
 			# fly to the boss battle!
+			bossfight = true
 			target = loop.boss
 			var target_pos = target.position
 			target_pos.x -= fighting_distance
-			var amount = speed * delta
+			var amount = fly_speed * delta
 			if position != target_pos:
 				position = position.move_toward(target_pos, amount)
 			else:
@@ -45,3 +59,8 @@ func _process(delta):
 
 func get_strength():
 	return 10 + hp
+
+func knockout():
+	print("Ouch!  You'll have to power back up to continue.")
+	bossfight = false
+	falling = true

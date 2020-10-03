@@ -53,8 +53,11 @@ func give_big_hit():
 	mel.hp -= reward / 2
 	# TODO: error sound / shake
 	bg_flash.color = Color.red
-	print("Time's up!  Next!")
-	cooldown.start()
+	print("Time's up!")
+	if mel.bossfight and mel.hp < mel.max_hp / 2:
+		mel.knockout()
+	else:
+		cooldown.start()
 
 func explode():
 	# TODO: explode!

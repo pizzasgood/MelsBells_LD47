@@ -35,9 +35,11 @@ func spawn_mook(angle=null):
 	spawn_entity(mooks[id], angle)
 
 func spawn_entity(res, angle=null):
+	if angle == null:
+		angle = get_next_gap()
 	var entity = res.instance()
 	add_child(entity)
-	entity.loop_pos = angle if angle != null else get_next_gap()
+	entity.loop_pos = angle
 func spawn_zombie(angle=null):
 	spawn_entity(mooks[0], angle)
 func spawn_bat(angle=null):
@@ -53,7 +55,8 @@ func get_next_gap():
 	var tries = 0
 	while get_ccw_distance_in_pixels(a, b) < minimum_gap and tries <= count_horde():
 		a = b
-		b = get_next_monster(a).loop_pos
+		var next = get_next_monster(a)
+		b = next.loop_pos
 		tries += 1
 	return a - (minimum_gap / (2*radius))
 
