@@ -1,44 +1,56 @@
 extends Node
 
+onready var bg_flash : ColorRect = get_node("../BGFlash")
 onready var seq_player = get_node("../SeqPlayer")
+onready var failure_timer : Timer = get_node("FailureTimer")
+onready var success_cooldown : Timer = get_node("SuccessCooldown")
+onready var timer_bar : ProgressBar = get_parent().find_node("TimeLimit")
 
-var bpm = 120
-var seq
 var recording = false
 var position = 0
-var duration
-var now
 
-func _process(delta):
-	if recording:
-		now += delta
-		var new_position = floor((now) * bpm / 60)
-		if new_position >= duration:
-			stop_recording()
-		elif new_position != position:
-			position = new_position
-			seq.notes.append(-1)
+func _process(_delta):
+	if not failure_timer.is_stopped():
+		timer_bar.value = failure_timer.time_left / failure_timer.wait_time
 
 func record_note(value):
 	if recording:
-		seq.notes[position] = value
+		if value == seq_player.seq.notes[position]:
+			_on_correct()
+		else:
+			_on_wrong()
 
-func start_recording(beats):
-	seq = Sequence.new()
-	seq.notes.append(-1)
-	now = 0
+func start_recording():
+	failure_timer.start()
 	position = 0
-	duration = beats
 	recording = true
 
 func stop_recording():
 	recording = false
-	seq.trim()
-	seq.print()
 	_on_finished()
 
+func _on_correct():
+	position += 1
+	if position >= len(seq_player.seq.notes):
+		bg_flash.color = Color.green.darkened(0.5)
+		print("Success!")
+		stop_recording()
+
+func _on_wrong():
+	position = 0
+	#TODO: error sound / shake
+	bg_flash.color = Color.red.darkened(0.6)
+	print("WRONG")
+
 func _on_finished():
-	print("Score: %s" % seq.compare(seq_player.seq))
-	var new_seq = Sequence.new()
-	new_seq.generate_notes(5, 3)
-	seq_player.play_seq(new_seq)
+	failure_timer.stop()
+	success_cooldown.start()
+
+func _on_FailureTimer_timeout():
+	#TODO: error sound / shake
+	bg_flash.color = Color.red
+	print("Time's up!  Next!")
+	stop_recording()
+
+func _on_SuccessCooldown_timeout():
+	seq_player.play_random()

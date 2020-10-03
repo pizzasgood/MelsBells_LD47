@@ -2,12 +2,13 @@ extends Node
 
 onready var seq_recorder = get_node("../SeqRecorder")
 
-var bpm = 120
+var bpm = 180
 var seq
 var playing = false
 var position = 0
 var now
 var bells = []
+var difficulty = 3
 
 func _ready():
 	for i in range(Sequence.NOTE_RANGE):
@@ -39,5 +40,10 @@ func play_seq(sequence):
 	playing = true
 	play_current_note()
 
+func play_random():
+	var new_seq = Sequence.new()
+	new_seq.generate_notes(difficulty)
+	play_seq(new_seq)
+
 func _on_finished():
-	seq_recorder.start_recording(floor(len(seq.notes)*1.5))
+	seq_recorder.start_recording()

@@ -1,18 +1,26 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MuteButton/MuteButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://BellButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BellButtons/green.png" type="Texture" id=4]
-[ext_resource path="res://BellButtons/purple.png" type="Texture" id=5]
 [ext_resource path="res://BellButtons/yellow.png" type="Texture" id=6]
 [ext_resource path="res://SeqPlayer.gd" type="Script" id=7]
-[ext_resource path="res://BellButtons/blue.png" type="Texture" id=8]
 [ext_resource path="res://Main.gd" type="Script" id=9]
 [ext_resource path="res://SeqRecorder.gd" type="Script" id=10]
+[ext_resource path="res://BGFlash.gd" type="Script" id=11]
 
 [node name="Main" type="Node"]
 script = ExtResource( 9 )
+
+[node name="BGFlash" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -26,6 +34,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 margin_right = 1024.0
 margin_bottom = 32.0
 alignment = 2
@@ -34,10 +43,16 @@ alignment = 2
 margin_left = 992.0
 margin_bottom = 32.0
 
-[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 36.0
+[node name="TimeLimit" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 292.0
+margin_bottom = 2.0
+max_value = 1.0
+percent_visible = false
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 6.0
+margin_right = 1024.0
+margin_bottom = 262.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,16 +69,6 @@ margin_left = 264.0
 margin_right = 392.0
 texture_normal = ExtResource( 4 )
 
-[node name="BellButton3" parent="MarginContainer/VBoxContainer/Buttons" instance=ExtResource( 3 )]
-margin_left = 396.0
-margin_right = 524.0
-texture_normal = ExtResource( 8 )
-
-[node name="BellButton4" parent="MarginContainer/VBoxContainer/Buttons" instance=ExtResource( 3 )]
-margin_left = 528.0
-margin_right = 656.0
-texture_normal = ExtResource( 5 )
-
 [node name="PauseMenu" parent="." instance=ExtResource( 2 )]
 visible = false
 
@@ -72,3 +77,12 @@ script = ExtResource( 7 )
 
 [node name="SeqRecorder" type="Node" parent="."]
 script = ExtResource( 10 )
+
+[node name="FailureTimer" type="Timer" parent="SeqRecorder"]
+wait_time = 4.0
+one_shot = true
+
+[node name="SuccessCooldown" type="Timer" parent="SeqRecorder"]
+one_shot = true
+[connection signal="timeout" from="SeqRecorder/FailureTimer" to="SeqRecorder" method="_on_FailureTimer_timeout"]
+[connection signal="timeout" from="SeqRecorder/SuccessCooldown" to="SeqRecorder" method="_on_SuccessCooldown_timeout"]
