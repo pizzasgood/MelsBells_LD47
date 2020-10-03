@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/HPBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Ghosts/ghost.aseprite" type="SpriteFrames" id=2]
+[ext_resource path="res://Entities/Ghosts/Ghost.gd" type="Script" id=3]
+
+[node name="Ghost" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="HPBar" parent="." instance=ExtResource( 1 )]
+margin_left = 62.8264
+margin_top = -97.0356
+margin_right = 78.8264
+margin_bottom = -33.0356
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 6, -60 )
+frames = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}

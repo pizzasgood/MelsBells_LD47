@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/HPBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Necro/necromancer.aseprite" type="SpriteFrames" id=2]
+[ext_resource path="res://Entities/Necro/Necro.gd" type="Script" id=3]
+
+[node name="Necro" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="HPBar" parent="." instance=ExtResource( 1 )]
+margin_left = 79.3081
+margin_top = -82.3358
+margin_right = 95.3081
+margin_bottom = -18.3358
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 3.5636, -54.7903 )
+frames = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/ghost.aseprite-4af9baabdd029241c1b148d916bf6018.tres"
+
+[deps]
+
+source_file="res://Entities/Ghosts/ghost.aseprite"
+dest_files=[ "res://.import/ghost.aseprite-4af9baabdd029241c1b148d916bf6018.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false

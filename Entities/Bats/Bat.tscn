@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/HPBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Bats/bat.aseprite" type="SpriteFrames" id=2]
+[ext_resource path="res://Entities/Bats/Bat.gd" type="Script" id=3]
+
+[node name="Bat" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="HPBar" parent="." instance=ExtResource( 1 )]
+margin_left = 58.0756
+margin_top = -81.4079
+margin_right = 74.0756
+margin_bottom = -17.4079
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -4, -48 )
+frames = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}

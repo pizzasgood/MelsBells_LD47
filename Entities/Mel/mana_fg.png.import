@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/muted.png-ff7e371827b16f0f30ff8ccbf3aa46ac.stex"
+path="res://.import/mana_fg.png-daf6015e8bdfcbf852f61a94b279eb53.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MuteButton/muted.png"
-dest_files=[ "res://.import/muted.png-ff7e371827b16f0f30ff8ccbf3aa46ac.stex" ]
+source_file="res://Entities/Mel/mana_fg.png"
+dest_files=[ "res://.import/mana_fg.png-daf6015e8bdfcbf852f61a94b279eb53.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

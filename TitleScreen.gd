@@ -10,6 +10,7 @@ func _on_ExitButton_pressed():
 	get_tree().quit()
 
 func _ready():
+	randomize()
 	start_button.connect("pressed", self, "_on_StartButton_pressed")
 	exit_button.connect("pressed", self, "_on_ExitButton_pressed")
 	start_button.grab_focus()

@@ -1,11 +1,13 @@
 extends Node
 
 onready var seq_recorder = get_node("../SeqRecorder")
+onready var warmup_timer : Timer = get_node("Warmup")
 
 var bpm = 180
 var seq
+var warmed_up = false
 var playing = false
-var position = 0
+var position
 var now
 var bells = []
 var difficulty = 3
@@ -34,16 +36,26 @@ func play_note(note):
 
 func play_seq(sequence):
 	seq = sequence
-	seq.print()
+	start()
+
+func play_random():
+	seq = Sequence.new()
+	seq.generate_notes(difficulty)
+	start()
+
+func start():
+	if not warmed_up:
+		warmup_timer.start()
+		return
 	now = 0
 	position = 0
 	playing = true
 	play_current_note()
 
-func play_random():
-	var new_seq = Sequence.new()
-	new_seq.generate_notes(difficulty)
-	play_seq(new_seq)
-
 func _on_finished():
 	seq_recorder.start_recording()
+
+
+func _on_Warmup_timeout():
+	warmed_up = true
+	start()

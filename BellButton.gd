@@ -1,7 +1,7 @@
 extends TextureButton
 
 onready var player : AudioStreamPlayer = get_node("AudioStreamPlayer")
-onready var seq_recorder = get_node("/root/Main/SeqRecorder")
+onready var seq_recorder = get_node("/root/Main").find_node("SeqRecorder")
 var rate : int
 var duration = 0.5 #seconds
 var amplitude = 0.5
@@ -14,8 +14,9 @@ func _unhandled_input(event):
 		get_tree().set_input_as_handled()
 
 func _on_BellButton_pressed():
-	play()
-	seq_recorder.record_note(note)
+	if seq_recorder.recording:
+		play()
+		seq_recorder.record_note(note)
 
 func play():
 	player.play()

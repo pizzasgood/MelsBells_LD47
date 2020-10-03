@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unmuted.png-f1e86e60e6be536ae69b81a2c7bc4f3b.stex"
+path="res://.import/hp_fg.png-d3654f3a96bc4829afef9cb3e36e70f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MuteButton/unmuted.png"
-dest_files=[ "res://.import/unmuted.png-f1e86e60e6be536ae69b81a2c7bc4f3b.stex" ]
+source_file="res://Entities/hp_fg.png"
+dest_files=[ "res://.import/hp_fg.png-d3654f3a96bc4829afef9cb3e36e70f8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

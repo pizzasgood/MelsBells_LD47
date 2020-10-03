@@ -5,14 +5,16 @@ const NOTE_RANGE = len(FREQS)
 
 var notes = [] # just a simple sequence, no polyphony
 
-# swap high and low notes
+# swap high and low notes (contrary to Array.invert(), which reverses!)
 func invert():
+	print("inverting!")
 	for i in range(len(notes)):
 		if notes[i] >= 0:
 			notes[i] = NOTE_RANGE - 1 - notes[i]
 
 # reverse the order of the notes
 func reverse():
+	print("reversing!")
 	notes.invert()
 
 # generate a fresh sequence from scratch, rhythm and all
@@ -65,6 +67,12 @@ func rpad(length):
 func lpad(length):
 	while len(notes) < length:
 		notes.push_front(-1)
+
+# copy the notes from another sequence
+func copy_from(other):
+	notes.clear()
+	for i in other.notes:
+		notes.append(i)
 
 func print():
 	print(notes)

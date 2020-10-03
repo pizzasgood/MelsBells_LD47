@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/zombie.aseprite-558de4b4294e1a15afc081f5c4b60269.tres"
+
+[deps]
+
+source_file="res://Entities/Zombies/zombie.aseprite"
+dest_files=[ "res://.import/zombie.aseprite-558de4b4294e1a15afc081f5c4b60269.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false

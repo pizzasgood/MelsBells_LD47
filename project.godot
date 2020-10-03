@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Entity",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Entities/Enemy.gd"
+}, {
+"base": "Node2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Entities/Entity.gd"
+}, {
 "base": "Reference",
 "class": "Sequence",
 "language": "GDScript",
 "path": "res://Sequence.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
+"Entity": "",
 "Sequence": ""
 }
 

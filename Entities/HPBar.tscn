@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/hp_bg.png" type="Texture" id=1]
+[ext_resource path="res://Entities/hp_fg.png" type="Texture" id=2]
+
+[node name="HPBar" type="TextureProgress"]
+margin_left = -8.0
+margin_top = -32.0
+margin_right = 8.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 8, 32 )
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

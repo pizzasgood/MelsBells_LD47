@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/HPBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Zombies/zombie.aseprite" type="SpriteFrames" id=3]
+[ext_resource path="res://Entities/Zombies/Zombie.gd" type="Script" id=4]
+
+[node name="Zombie" type="Node2D" groups=[
+"enemies",
+"mooks",
+]]
+script = ExtResource( 4 )
+
+[node name="HPBar" parent="." instance=ExtResource( 1 )]
+margin_left = 44.9731
+margin_top = -86.5623
+margin_right = 60.9731
+margin_bottom = -22.5623
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 3 )
+offset = Vector2( -2, -56 )
+__meta__ = {
+"_edit_lock_": true
+}
