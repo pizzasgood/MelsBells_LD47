@@ -3,6 +3,7 @@ class_name Entity
 
 onready var loop = get_parent()
 onready var bar = get_node("HPBar")
+onready var sprite : AnimatedSprite = get_node("AnimatedSprite")
 
 var max_hp = 30
 var hp : float = 0 setget set_hp

@@ -3,6 +3,7 @@ extends Node
 onready var seq_player = get_node("../SeqPlayer")
 onready var failure_timer : Timer = get_node("FailureTimer")
 onready var timer_bar : TextureProgress = get_parent().find_node("TimeLimit")
+onready var mel = get_tree().get_nodes_in_group("player")[0]
 
 var recording = false
 var position = 0
@@ -16,6 +17,7 @@ func _process(_delta):
 
 func record_note(value):
 	if recording:
+		mel.step_sprite()
 		if value == target.counter_seq.notes[position]:
 			_on_correct()
 		else:

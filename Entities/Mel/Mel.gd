@@ -10,7 +10,7 @@ var strength setget , get_strength
 
 var moving = false
 var falling = false
-var target : Enemy
+var target
 var walk_speed : float = 150
 var fly_speed : float = 400
 var fall_speed : float = 1000
@@ -67,6 +67,9 @@ func _process(delta):
 
 func get_strength():
 	return 10 + hp
+
+func step_sprite():
+	sprite.frame = (sprite.frame + 1) % sprite.frames.get_frame_count(sprite.animation)
 
 func knockout():
 	print("Ouch!  You'll have to power back up to continue.")
