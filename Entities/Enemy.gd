@@ -7,6 +7,7 @@ onready var seq_player = get_node("/root/Main").find_node("SeqPlayer")
 onready var seq_recorder = get_node("/root/Main").find_node("SeqRecorder")
 onready var death_effect : CPUParticles2D = get_node("Evaporation")
 onready var death_sfx : AudioStreamPlayer2D = get_node("DeathSFX")
+onready var hint_overlay : Texture = load("res://TimeLimit/overlay_repeat.png")
 
 var reward = 10
 var difficulty = 3

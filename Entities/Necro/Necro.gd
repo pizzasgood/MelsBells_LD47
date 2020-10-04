@@ -4,7 +4,7 @@ func _init():
 	max_hp = 500
 
 func _ready():
-	pass
+	hint_overlay = load("res://TimeLimit/overlay_invert-reverse.png")
 
 func _set_counter_seq():
 	counter_seq.reverse()

@@ -42,6 +42,7 @@ func play_random():
 	start()
 
 func start():
+	seq_recorder.set_hint()
 	AudioServer.set_bus_send(AudioServer.get_bus_index("Bells"), "Spooky Bells")
 	now = 0
 	position = 0

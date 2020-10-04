@@ -21,7 +21,7 @@ margin_bottom = -33.0356
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 6, -60 )
 __meta__ = {
