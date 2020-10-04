@@ -204,6 +204,7 @@ __meta__ = {
 }
 
 [node name="Background" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
@@ -251,7 +252,7 @@ __meta__ = {
 }
 
 [node name="Mel" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 750 )
+position = Vector2( 0, 751 )
 rotation = -6.28144
 
 [node name="Necro" parent="." instance=ExtResource( 2 )]
