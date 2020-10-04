@@ -60,6 +60,9 @@ func _process(delta):
 			var amount = fly_speed * delta
 			if position != target_pos:
 				position = position.move_toward(target_pos, amount)
+				var distance = position.distance_to(target_pos)
+				if distance < 200:
+					rotation = lerp_angle(loop_pos - TAU/4, 0, (200-distance) / 200)
 			else:
 				rotation = 0
 				moving = false
