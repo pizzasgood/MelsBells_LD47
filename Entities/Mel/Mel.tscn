@@ -27,6 +27,7 @@ frames = ExtResource( 4 )
 offset = Vector2( 0, -43 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -180 )
 current = true
 
 [node name="CrashSplash" type="CPUParticles2D" parent="."]
