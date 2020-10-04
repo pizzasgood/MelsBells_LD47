@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://TimeLimit/fg.png" type="Texture" id=1]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://BellButtons/3-pressed.png" type="Texture" id=14]
 [ext_resource path="res://BellButtons/3-hover.png" type="Texture" id=15]
 [ext_resource path="res://BellButtons/2-pressed.png" type="Texture" id=16]
-[ext_resource path="res://bgm/DancingThroughTheCreeps.ogg" type="AudioStream" id=17]
 
 [node name="Main" type="Node"]
 script = ExtResource( 9 )
@@ -110,9 +109,5 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Loop" parent="." instance=ExtResource( 5 )]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
-autoplay = true
 [connection signal="timeout" from="SeqPlayer/Warmup" to="SeqPlayer" method="_on_Warmup_timeout"]
 [connection signal="timeout" from="SeqRecorder/FailureTimer" to="SeqRecorder" method="_on_FailureTimer_timeout"]

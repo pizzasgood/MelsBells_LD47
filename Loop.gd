@@ -3,6 +3,10 @@ extends Node2D
 onready var mel = get_node("Mel")
 onready var boss = get_node("Necro")
 onready var victory_timer = get_node("VictoryTimer")
+onready var intro_animation : AnimationPlayer = get_node("IntroAnimation")
+onready var background = get_node("Background")
+onready var flatground = get_node("FlatBackground")
+onready var bgm : AudioStreamPlayer = get_node("BGM")
 
 var radius = 750
 var mooks = [
@@ -11,14 +15,39 @@ var mooks = [
 	load("res://Entities/Ghosts/Ghost.tscn"),
 ]
 var target_population = 20
+var intro_finished = false
+var ground_flashing = false
 
 func _ready():
 	mel.loop_pos = TAU / 4
-	repopulate()
-	mel.moving = true
+	intro_animation.play("Intro")
 
 func _process(_delta):
-	repopulate()
+	if ground_flashing:
+		background.visible = not background.visible
+	if intro_finished:
+		repopulate()
+
+func flash_ground():
+	flatground.visible = true
+	ground_flashing = true
+
+func use_loop_ground():
+	ground_flashing = false
+	flatground.visible = false
+	background.visible = true
+
+func use_flat_ground():
+	ground_flashing = false
+	flatground.visible = true
+	background.visible = false
+
+func start_music():
+	bgm.play()
+
+func start_game():
+	intro_finished = true
+	mel.moving = true
 
 func get_horde():
 	return get_tree().get_nodes_in_group("mooks")

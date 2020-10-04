@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/HPBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Bats/bat.aseprite" type="SpriteFrames" id=2]
 [ext_resource path="res://Entities/Bats/Bat.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Evaporation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sfx/whoosh.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/SpawnAnimation.tscn" type="PackedScene" id=6]
 
 [node name="Bat" type="Node2D" groups=[
 "enemies",
@@ -19,10 +20,10 @@ margin_right = 74.0756
 margin_bottom = -17.4079
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -4, -48 )
 frames = ExtResource( 2 )
-frame = 1
+frame = 3
 playing = true
+offset = Vector2( -4, -48 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -32,3 +33,5 @@ __meta__ = {
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 bus = "DeathSFX"
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 6 )]
