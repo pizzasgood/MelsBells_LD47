@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/flat_background.aseprite-62906b003a62311249969788b1399ab0.tres"
+
+[deps]
+
+source_file="res://backgrounds/flat_background.aseprite"
+dest_files=[ "res://.import/flat_background.aseprite-62906b003a62311249969788b1399ab0.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false
