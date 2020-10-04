@@ -73,6 +73,7 @@ func get_next_monster(angle=null):
 				ret = e
 	return ret
 
+# gets the ccw distance from a to b in radians
 func get_ccw_distance(a, b):
 	# if a == b we're considering them to be a full circle apart
 	# this enables searching for the nearest entity to another entity without fear of it just finding itself
@@ -87,8 +88,30 @@ func get_ccw_distance(a, b):
 func get_ccw_distance_in_pixels(a, b):
 	return get_ccw_distance(a, b) * radius
 
+# this gets the shortest distance from a to b in radians, ignoring directions
+# only use this for AOE stuff; use get_ccw_distance() for finding nearest enemy
+func get_distance(a, b):
+	var d = fmod(abs(b - a), TAU)
+	if d > TAU/2:
+		d = TAU - d
+	return d
+
+# returns a list of monsters within +/- angle of position
+func get_monsters_within_range(pos, angle):
+	var ret = []
+	for e in get_horde():
+		if get_distance(pos, e.loop_pos) <= angle:
+			ret.append(e)
+	return ret
+
+# returns a list of monsters within +/- pixels of position
+func get_monsters_within_pixel_range(pos, pixels):
+	var angle = pixels / radius
+	return get_monsters_within_range(pos, angle)
+
 func victory():
 	print("You've defeated Loupe and saved your town!  Congratulations!")
+	target_population = 0
 	for e in get_horde():
 		e.explode()
 		victory_timer.start()

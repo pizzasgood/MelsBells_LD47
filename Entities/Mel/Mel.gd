@@ -31,6 +31,7 @@ func _process(delta):
 			falling = false
 			moving = true
 			self.loop_pos = TAU / 2
+			do_shockwave()
 	elif moving:
 		if hp < max_hp:
 			# move to the next mook
@@ -65,6 +66,11 @@ func knockout():
 	bossfight = false
 	falling = true
 
+# kill everything nearby
+func do_shockwave():
+	for i in loop.get_monsters_within_range(loop_pos, 2 * fighting_angle):
+		i.explode()
+
 # these are some cheat codes for debugging
 func _unhandled_input(event):
 	if OS.is_debug_build():
@@ -74,3 +80,5 @@ func _unhandled_input(event):
 			self.hp = 0
 		if event.is_action("ui_right"):
 			loop.victory()
+		if event.is_action("ui_left"):
+			do_shockwave()

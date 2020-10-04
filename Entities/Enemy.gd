@@ -62,6 +62,7 @@ func give_big_hit():
 func explode():
 	# TODO: explode!
 	visible = false
+	queue_free()
 
 func _on_cooldown_timeout():
 	if hp > 0:
