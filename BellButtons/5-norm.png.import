@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/purple.png-17bebab3082be78000ac81f6b9d73a8b.stex"
+path="res://.import/5-norm.png-87da035fa7eaebedec0180e0a7ceff0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BellButtons/purple.png"
-dest_files=[ "res://.import/purple.png-17bebab3082be78000ac81f6b9d73a8b.stex" ]
+source_file="res://BellButtons/5-norm.png"
+dest_files=[ "res://.import/5-norm.png-87da035fa7eaebedec0180e0a7ceff0f.stex" ]
 
 [params]
 

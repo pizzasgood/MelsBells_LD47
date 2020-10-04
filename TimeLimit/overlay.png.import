@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green.png-78ac1572eea4ba75a0907eb81a19c596.stex"
+path="res://.import/overlay.png-cdfe53cbc65c0ba4a1166aea388c738a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BellButtons/green.png"
-dest_files=[ "res://.import/green.png-78ac1572eea4ba75a0907eb81a19c596.stex" ]
+source_file="res://TimeLimit/overlay.png"
+dest_files=[ "res://.import/overlay.png-cdfe53cbc65c0ba4a1166aea388c738a.stex" ]
 
 [params]
 

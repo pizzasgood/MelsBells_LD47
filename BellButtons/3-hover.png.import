@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/yellow.png-8ff3b37b8b551468d52e90e6118c7dde.stex"
+path="res://.import/3-hover.png-7453931b5e756d7e057ee7157aba7430.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BellButtons/yellow.png"
-dest_files=[ "res://.import/yellow.png-8ff3b37b8b551468d52e90e6118c7dde.stex" ]
+source_file="res://BellButtons/3-hover.png"
+dest_files=[ "res://.import/3-hover.png-7453931b5e756d7e057ee7157aba7430.stex" ]
 
 [params]
 

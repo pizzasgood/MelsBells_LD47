@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://BellButtons/red.png" type="Texture" id=1]
+[ext_resource path="res://BellButtons/1-norm.png" type="Texture" id=1]
 [ext_resource path="res://BellButtons/BellButton.gd" type="Script" id=2]
+[ext_resource path="res://BellButtons/1-hover.png" type="Texture" id=3]
+[ext_resource path="res://BellButtons/1-pressed.png" type="Texture" id=4]
 
 [node name="BellButton" type="TextureButton"]
+action_mode = 0
 texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

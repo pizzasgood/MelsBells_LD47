@@ -2,7 +2,7 @@ extends Node
 
 onready var seq_player = get_node("../SeqPlayer")
 onready var failure_timer : Timer = get_node("FailureTimer")
-onready var timer_bar : ProgressBar = get_parent().find_node("TimeLimit")
+onready var timer_bar : TextureProgress = get_parent().find_node("TimeLimit")
 
 var recording = false
 var position = 0
@@ -11,6 +11,8 @@ var target : Enemy
 func _process(_delta):
 	if not failure_timer.is_stopped():
 		timer_bar.value = failure_timer.time_left / failure_timer.wait_time
+	else:
+		timer_bar.value = 0
 
 func record_note(value):
 	if recording:
