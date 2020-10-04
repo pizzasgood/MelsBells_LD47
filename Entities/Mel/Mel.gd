@@ -6,6 +6,10 @@ onready var take_flight : AudioStreamPlayer2D = get_node("TakeFlight")
 onready var crash_player : AudioStreamPlayer2D = get_node("CrashPlayer")
 onready var short_buzz : AudioStreamPlayer = get_node("ShortBuzz")
 onready var long_buzz : AudioStreamPlayer = get_node("LongBuzz")
+onready var sparks : AnimatedSprite = get_node("Sparks")
+onready var wings : AnimatedSprite = get_node("Wings")
+onready var aura : AnimatedSprite = get_node("Aura")
+onready var overflow : CPUParticles2D = get_node("ManaOverflow")
 
 var strength setget , get_strength
 
@@ -19,6 +23,7 @@ var angular_speed : float
 var fighting_distance : float = 100
 var fighting_angle : float
 var bossfight = false
+var suppress_effects = false
 
 func _init():
 	max_hp = 100
@@ -70,6 +75,11 @@ func _process(delta):
 				rotation = 0
 				moving = false
 				target.engage()
+	if not suppress_effects:
+		aura.visible = true if hp >= 0.4 * max_hp else false
+		sparks.visible = true if hp >= 0.6 * max_hp else false
+		wings.visible = true if (hp >= 0.8 * max_hp or bossfight) else false
+		overflow.emitting = true if hp >= max_hp else false
 
 func get_strength():
 	return 10 + hp
@@ -90,6 +100,13 @@ func do_shockwave():
 	crash_splash.emitting = true
 	for i in loop.get_monsters_within_range(loop_pos, 2 * fighting_angle):
 		i.die()
+
+func stop_effects():
+	suppress_effects = true
+	aura.visible = false
+	sparks.visible = false
+	wings.visible = false
+	overflow.emitting = false
 
 func _on_CrashTimer_timeout():
 	moving = true

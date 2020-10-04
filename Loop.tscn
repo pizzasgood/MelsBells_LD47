@@ -178,9 +178,12 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 3.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 3.7, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "stop_effects"
+}, {
 "args": [  ],
 "method": "celebrate"
 } ]
@@ -252,8 +255,8 @@ __meta__ = {
 }
 
 [node name="Mel" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 751 )
-rotation = -6.28144
+visible = false
+position = Vector2( -100, 0 )
 
 [node name="Necro" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1189.83, -111.453 )

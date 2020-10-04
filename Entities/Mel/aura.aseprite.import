@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/aura.aseprite-ddb346330dec8506d1e642552661a5fb.tres"
+
+[deps]
+
+source_file="res://Entities/Mel/aura.aseprite"
+dest_files=[ "res://.import/aura.aseprite-ddb346330dec8506d1e642552661a5fb.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false

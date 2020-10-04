@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/sparks.aseprite-bbabc5f336b99e7b0b56821ba4637bc3.tres"
+
+[deps]
+
+source_file="res://Entities/Mel/sparks.aseprite"
+dest_files=[ "res://.import/sparks.aseprite-bbabc5f336b99e7b0b56821ba4637bc3.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false

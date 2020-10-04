@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/wings.aseprite-7839b2674efa4c7235837825c442aefa.tres"
+
+[deps]
+
+source_file="res://Entities/Mel/wings.aseprite"
+dest_files=[ "res://.import/wings.aseprite-7839b2674efa4c7235837825c442aefa.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false
