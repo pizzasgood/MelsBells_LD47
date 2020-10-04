@@ -41,12 +41,12 @@ func engage():
 func take_hit():
 	self.hp -= mel.strength
 	if hp > 0:
-		bg_flash.color = Color.green.darkened(0.5)
+		bg_flash.color = Color.blue.darkened(0.5)
 		print("Success!")
 		cooldown.start()
 	else:
 		mel.hp += reward
-		bg_flash.color = Color.green
+		bg_flash.color = Color.blue
 		print("Monster defeated!")
 		die(true)
 
