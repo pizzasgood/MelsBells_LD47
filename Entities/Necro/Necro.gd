@@ -1,7 +1,7 @@
 extends Enemy
 
 func _init():
-	max_hp = 500
+	max_hp = 2000
 
 func _ready():
 	hint_overlay = load("res://TimeLimit/overlay_invert-reverse.png")
