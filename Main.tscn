@@ -98,9 +98,6 @@ visible = false
 [node name="SeqPlayer" type="Node" parent="."]
 script = ExtResource( 7 )
 
-[node name="Warmup" type="Timer" parent="SeqPlayer"]
-one_shot = true
-
 [node name="SeqRecorder" type="Node" parent="."]
 script = ExtResource( 10 )
 
@@ -109,5 +106,4 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Loop" parent="." instance=ExtResource( 5 )]
-[connection signal="timeout" from="SeqPlayer/Warmup" to="SeqPlayer" method="_on_Warmup_timeout"]
 [connection signal="timeout" from="SeqRecorder/FailureTimer" to="SeqRecorder" method="_on_FailureTimer_timeout"]

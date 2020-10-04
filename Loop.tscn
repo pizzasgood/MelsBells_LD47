@@ -142,11 +142,13 @@ __meta__ = {
 visible = false
 
 [node name="Necro" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0.634521, 601.335 )
+position = Vector2( 760.659, 218.008 )
+rotation = -2.46471
 
 [node name="VictoryTimer" type="Timer" parent="."]
 
 [node name="IntroAnimation" type="AnimationPlayer" parent="."]
+autoplay = "Intro"
 anims/Intro = SubResource( 1 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]

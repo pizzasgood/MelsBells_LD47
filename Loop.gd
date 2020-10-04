@@ -3,7 +3,6 @@ extends Node2D
 onready var mel = get_node("Mel")
 onready var boss = get_node("Necro")
 onready var victory_timer = get_node("VictoryTimer")
-onready var intro_animation : AnimationPlayer = get_node("IntroAnimation")
 onready var background = get_node("Background")
 onready var flatground = get_node("FlatBackground")
 onready var bgm : AudioStreamPlayer = get_node("BGM")
@@ -20,7 +19,6 @@ var ground_flashing = false
 
 func _ready():
 	mel.loop_pos = TAU / 4
-	intro_animation.play("Intro")
 
 func _process(_delta):
 	if ground_flashing:

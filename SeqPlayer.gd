@@ -1,11 +1,9 @@
 extends Node
 
 onready var seq_recorder = get_node("../SeqRecorder")
-onready var warmup_timer : Timer = get_node("Warmup")
 
 var bpm = 180
 var seq
-var warmed_up = false
 var playing = false
 var position
 var now
@@ -44,9 +42,6 @@ func play_random():
 	start()
 
 func start():
-	if not warmed_up:
-		warmup_timer.start()
-		return
 	AudioServer.set_bus_send(AudioServer.get_bus_index("Bells"), "Spooky Bells")
 	now = 0
 	position = 0
@@ -55,8 +50,3 @@ func start():
 
 func _on_finished():
 	seq_recorder.start_recording()
-
-
-func _on_Warmup_timeout():
-	warmed_up = true
-	start()
