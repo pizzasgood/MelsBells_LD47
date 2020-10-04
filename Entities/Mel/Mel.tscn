@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Mel/mana_fg.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Mel/mana_bg.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Mel/Mel.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Mel/mel.aseprite" type="SpriteFrames" id=4]
 [ext_resource path="res://Entities/HPBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sfx/crunch.wav" type="AudioStream" id=6]
+[ext_resource path="res://sfx/bzzwwn.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/bzzt.wav" type="AudioStream" id=8]
 
 [node name="Mel" type="Node2D" groups=[
 "player",
@@ -48,4 +51,15 @@ hue_variation_random = 1.0
 
 [node name="CrashTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CrashPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="ShortBuzz" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "BuzzSFX"
+
+[node name="LongBuzz" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "BuzzSFX"
 [connection signal="timeout" from="CrashTimer" to="." method="_on_CrashTimer_timeout"]

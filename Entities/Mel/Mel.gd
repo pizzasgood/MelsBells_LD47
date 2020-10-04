@@ -2,6 +2,9 @@ extends Entity
 
 onready var crash_splash : CPUParticles2D = get_node("CrashSplash")
 onready var crash_timer : Timer = get_node("CrashTimer")
+onready var crash_player : AudioStreamPlayer2D = get_node("CrashPlayer")
+onready var short_buzz : AudioStreamPlayer = get_node("ShortBuzz")
+onready var long_buzz : AudioStreamPlayer = get_node("LongBuzz")
 
 var strength setget , get_strength
 
@@ -35,6 +38,7 @@ func _process(delta):
 			self.loop_pos = TAU / 2
 			do_shockwave()
 			crash_timer.start()
+			crash_player.play()
 	elif moving:
 		if hp < max_hp:
 			# move to the next mook

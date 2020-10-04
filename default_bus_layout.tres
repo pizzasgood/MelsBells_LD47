@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=2]
+[gd_resource type="AudioBusLayout" load_steps=5 format=2]
 
 [sub_resource type="AudioEffectPanner" id=2]
 resource_name = "Panner"
@@ -14,6 +14,12 @@ wet = 0.25
 [sub_resource type="AudioEffectPanner" id=3]
 resource_name = "Panner"
 pan = -0.1
+
+[sub_resource type="AudioEffectReverb" id=4]
+resource_name = "Reverb"
+room_size = 0.5
+dry = 0.7
+wet = 0.2
 
 [resource]
 bus/1/name = "Spooky Bells"
@@ -40,3 +46,17 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = "Master"
+bus/4/name = "DeathSFX"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -9.63278
+bus/4/send = "Master"
+bus/4/effect/0/effect = SubResource( 4 )
+bus/4/effect/0/enabled = true
+bus/5/name = "BuzzSFX"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = -8.00903
+bus/5/send = "Master"
