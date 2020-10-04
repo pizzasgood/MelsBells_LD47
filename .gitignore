@@ -1,4 +1,4 @@
-.bak
+*.bak
 .import
 out
 logs
