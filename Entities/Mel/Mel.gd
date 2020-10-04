@@ -77,6 +77,9 @@ func get_strength():
 func step_sprite():
 	sprite.frame = (sprite.frame + 1) % sprite.frames.get_frame_count(sprite.animation)
 
+func celebrate():
+	sprite.play()
+
 func knockout():
 	print("Ouch!  You'll have to power back up to continue.")
 	bossfight = false

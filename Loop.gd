@@ -2,7 +2,7 @@ extends Node2D
 
 onready var mel = get_node("Mel")
 onready var boss = get_node("Necro")
-onready var victory_timer = get_node("VictoryTimer")
+onready var animation_player = get_node("AnimationPlayer")
 onready var background = get_node("Background")
 onready var flatground = get_node("FlatBackground")
 onready var bgm : AudioStreamPlayer = get_node("BGM")
@@ -18,6 +18,7 @@ var intro_finished = false
 var ground_flashing = false
 
 func _ready():
+	mel.visible = false
 	mel.loop_pos = TAU / 4
 
 func _process(_delta):
@@ -141,7 +142,7 @@ func victory():
 	target_population = 0
 	for e in get_horde():
 		e.die()
-		victory_timer.start()
+		animation_player.play("Victory")
 
-func _on_VictoryTimer_timeout():
+func _on_VictoryAnimation_complete():
 	get_tree().change_scene("res://TitleScreen.tscn")
