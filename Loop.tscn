@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Loop.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Necro/Necro.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://backgrounds/looped_background.png" type="Texture" id=4]
 [ext_resource path="res://backgrounds/flat_background.png" type="Texture" id=5]
 [ext_resource path="res://bgm/DancingThroughTheCreeps.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sfx/door.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/big_change.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Intro"
@@ -41,7 +43,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 4.5, 5.5, 6, 8, 9 ),
+"times": PoolRealArray( 4.5, 5.5, 6, 7.5, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -71,6 +73,24 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("IntroAnimation/IntroSFX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 4.4, 6.9 )
 }
 
 [node name="Loop" type="Node2D"]
@@ -142,14 +162,17 @@ __meta__ = {
 visible = false
 
 [node name="Necro" parent="." instance=ExtResource( 2 )]
-position = Vector2( 760.659, 218.008 )
-rotation = -2.46471
+position = Vector2( -20.0291, 618.795 )
+rotation = 0.165318
 
 [node name="VictoryTimer" type="Timer" parent="."]
 
 [node name="IntroAnimation" type="AnimationPlayer" parent="."]
 autoplay = "Intro"
 anims/Intro = SubResource( 1 )
+
+[node name="IntroSFX" type="AudioStreamPlayer" parent="IntroAnimation"]
+stream = ExtResource( 7 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
