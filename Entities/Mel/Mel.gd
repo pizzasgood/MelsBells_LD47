@@ -91,11 +91,15 @@ func _on_CrashTimer_timeout():
 # these are some cheat codes for debugging
 func _unhandled_input(event):
 	if OS.is_debug_build():
-		if event.is_action("ui_up"):
-			self.hp = max_hp - 10
-		if event.is_action("ui_down"):
+		if event.is_action_pressed("ui_select"):
+			self.hp += 20
+		if event.is_action_pressed("ui_up"):
+			self.hp = max_hp
+		if event.is_action_pressed("ui_down"):
 			self.hp = 0
-		if event.is_action("ui_right"):
+		if event.is_action_pressed("ui_right"):
+			self.loop_pos -= TAU / 4
+		if event.is_action_pressed("ui_end"):
 			loop.victory()
 		if event.is_action("ui_left"):
 			do_shockwave()
