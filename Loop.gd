@@ -4,7 +4,7 @@ onready var mel = get_node("Mel")
 onready var boss = get_node("Necro")
 onready var victory_timer = get_node("VictoryTimer")
 
-var radius = 1000
+var radius = 750
 var mooks = [
 	load("res://Entities/Zombies/Zombie.tscn"),
 	load("res://Entities/Bats/Bat.tscn"),
