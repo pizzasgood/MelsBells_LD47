@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://BellButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BellButtons/BellButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BellButtons/green.png" type="Texture" id=4]
 [ext_resource path="res://Loop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://BellButtons/yellow.png" type="Texture" id=6]
@@ -47,21 +47,25 @@ percent_visible = false
 [node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 margin_top = 6.0
 margin_right = 1024.0
-margin_bottom = 262.0
+margin_bottom = 22.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BellButton0" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons" instance=ExtResource( 3 )]
+margin_right = 16.0
+margin_bottom = 16.0
 
 [node name="BellButton1" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons" instance=ExtResource( 3 )]
-margin_left = 132.0
-margin_right = 260.0
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
 texture_normal = ExtResource( 6 )
 
 [node name="BellButton2" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons" instance=ExtResource( 3 )]
-margin_left = 264.0
-margin_right = 392.0
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
 texture_normal = ExtResource( 4 )
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
