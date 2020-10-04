@@ -16,4 +16,5 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Bells"
 [connection signal="pressed" from="." to="." method="_on_BellButton_pressed"]

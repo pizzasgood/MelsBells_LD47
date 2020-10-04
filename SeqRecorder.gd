@@ -22,6 +22,7 @@ func record_note(value):
 			_on_wrong()
 
 func start_recording():
+	AudioServer.set_bus_send(AudioServer.get_bus_index("Bells"), "Holy Bells")
 	failure_timer.start()
 	position = 0
 	recording = true

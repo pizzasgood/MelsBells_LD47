@@ -47,6 +47,7 @@ func start():
 	if not warmed_up:
 		warmup_timer.start()
 		return
+	AudioServer.set_bus_send(AudioServer.get_bus_index("Bells"), "Spooky Bells")
 	now = 0
 	position = 0
 	playing = true
