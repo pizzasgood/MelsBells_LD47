@@ -21,6 +21,8 @@ margin_bottom = -18.3358
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 3.5636, -54.7903 )
 frames = ExtResource( 2 )
+frame = 2
+playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

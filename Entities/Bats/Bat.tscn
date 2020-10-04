@@ -21,6 +21,8 @@ margin_bottom = -17.4079
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -4, -48 )
 frames = ExtResource( 2 )
+frame = 1
+playing = true
 __meta__ = {
 "_edit_lock_": true
 }
