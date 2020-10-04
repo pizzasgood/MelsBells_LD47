@@ -25,3 +25,27 @@ offset = Vector2( 0, -43 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="CrashSplash" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 25, 10 )
+direction = Vector2( 0, -1 )
+spread = 90.0
+initial_velocity = 200.0
+angular_velocity = 50.0
+angular_velocity_random = 1.0
+scale_amount = 10.0
+scale_amount_random = 0.41
+color = Color( 1, 0.839216, 0, 1 )
+hue_variation = -0.1
+hue_variation_random = 1.0
+
+[node name="CrashTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="CrashTimer" to="." method="_on_CrashTimer_timeout"]

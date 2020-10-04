@@ -5,12 +5,15 @@ onready var mel = get_node("../Mel")
 onready var bg_flash : ColorRect = get_node("/root/Main").find_node("BGFlash")
 onready var seq_player = get_node("/root/Main").find_node("SeqPlayer")
 onready var seq_recorder = get_node("/root/Main").find_node("SeqRecorder")
+onready var death_effect : CPUParticles2D = get_node("Evaporation")
+onready var sprite : AnimatedSprite = get_node("AnimatedSprite")
 
 var reward = 10
 var difficulty = 3
 var own_seq := Sequence.new()
 var counter_seq := Sequence.new()
 var cooldown : Timer
+var affect_mel_on_death = false
 
 func _ready():
 	cooldown = Timer.new()
@@ -18,6 +21,10 @@ func _ready():
 	cooldown.wait_time = 1
 	cooldown.connect("timeout", self, "_on_cooldown_timeout")
 	add_child(cooldown)
+
+func _process(_delta):
+	if hp == 0:
+		sprite.visible = not sprite.visible
 
 func _set_counter_seq():
 	pass
@@ -41,7 +48,7 @@ func take_hit():
 		mel.hp += reward
 		bg_flash.color = Color.green
 		print("Monster defeated!")
-		cooldown.start()
+		die(true)
 
 func give_small_hit():
 	mel.hp -= max(2, reward / 5)
@@ -59,10 +66,11 @@ func give_big_hit():
 	else:
 		cooldown.start()
 
-func explode():
-	# TODO: explode!
-	visible = false
-	queue_free()
+func die(affect_mel=false):
+	hp = 0 #specifically DON'T use the setter here
+	affect_mel_on_death = affect_mel
+	death_effect.emitting = true
+	cooldown.start()
 
 func _on_cooldown_timeout():
 	if hp > 0:
@@ -71,6 +79,7 @@ func _on_cooldown_timeout():
 		_on_death()
 
 func _on_death():
+	if affect_mel_on_death:
 		mel.moving = true
-		visible = false
-		queue_free()
+	visible = false
+	queue_free()

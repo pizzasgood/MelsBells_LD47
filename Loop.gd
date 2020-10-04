@@ -113,7 +113,7 @@ func victory():
 	print("You've defeated Loupe and saved your town!  Congratulations!")
 	target_population = 0
 	for e in get_horde():
-		e.explode()
+		e.die()
 		victory_timer.start()
 
 func _on_VictoryTimer_timeout():

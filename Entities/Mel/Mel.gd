@@ -1,13 +1,16 @@
 extends Entity
 
+onready var crash_splash : CPUParticles2D = get_node("CrashSplash")
+onready var crash_timer : Timer = get_node("CrashTimer")
+
 var strength setget , get_strength
 
 var moving = false
 var falling = false
 var target : Enemy
 var walk_speed : float = 150
-var fly_speed : float = 300
-var fall_speed : float = 500
+var fly_speed : float = 400
+var fall_speed : float = 1000
 var angular_speed : float
 var fighting_distance : float = 100
 var fighting_angle : float
@@ -29,9 +32,9 @@ func _process(delta):
 			position = position.move_toward(target_pos, amount)
 		else:
 			falling = false
-			moving = true
 			self.loop_pos = TAU / 2
 			do_shockwave()
+			crash_timer.start()
 	elif moving:
 		if hp < max_hp:
 			# move to the next mook
@@ -68,8 +71,12 @@ func knockout():
 
 # kill everything nearby
 func do_shockwave():
+	crash_splash.emitting = true
 	for i in loop.get_monsters_within_range(loop_pos, 2 * fighting_angle):
-		i.explode()
+		i.die()
+
+func _on_CrashTimer_timeout():
+	moving = true
 
 # these are some cheat codes for debugging
 func _unhandled_input(event):
