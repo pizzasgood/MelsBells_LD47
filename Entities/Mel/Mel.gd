@@ -2,6 +2,7 @@ extends Entity
 
 onready var crash_splash : CPUParticles2D = get_node("CrashSplash")
 onready var crash_timer : Timer = get_node("CrashTimer")
+onready var take_flight : AudioStreamPlayer2D = get_node("TakeFlight")
 onready var crash_player : AudioStreamPlayer2D = get_node("CrashPlayer")
 onready var short_buzz : AudioStreamPlayer = get_node("ShortBuzz")
 onready var long_buzz : AudioStreamPlayer = get_node("LongBuzz")
@@ -53,7 +54,9 @@ func _process(delta):
 				target.engage()
 		else:
 			# fly to the boss battle!
-			bossfight = true
+			if not bossfight:
+				bossfight = true
+				take_flight.play()
 			target = loop.boss
 			var target_pos = target.position
 			target_pos.x -= fighting_distance
